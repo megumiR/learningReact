@@ -12,8 +12,38 @@ const doubles = numbers.map(x => x * 2) // [2, 4, 6, 8]
 ]*/
 // key for loop(listName.map(function) : DBid *the best,other ways->substitution of id, element-index key={`${plant}-${index}`})
 
-/***take categories as an array ***/
-let plantCategories = []
+/***********************
+// in function above the list : + use the one of 3 methodes ".reduce.forEach.filter"
+<div>
+{categoryList.map((cat, index) => (
+    <button key={`${cat}-${index}`} id={`"btn" + ${cat}${index}`}>{cat}</button>
+))}
+</div>*******************/
+/*** take categories as an array ".reduce" ***/
+let categoryList = []
+categoryList = plantList.reduce(function (previousValue, currentValue) {
+    if(!previousValue.includes(currentValue.category)){
+        previousValue.push(currentValue.category);
+    }
+    return previousValue;
+},["all"]);
+console.log(categoryList)
+/*** fin: take categories as an array ".reduce" ***/
+
+/***take categories as an array ".forEach" ***/
+/*let categoryList = ["all"]
+plantList.forEach(callbackfn)
+function callbackfn(value,index,array){
+    if(!categoryList.includes(value.category)) {
+        categoryList.push(value.category);
+    }
+}
+console.log(categoryList)
+/*** fin:take categories as an array ".forEach" ***/
+
+/***take categories as an array ".filter" ***/
+/*
+let plantCategories = ["all"]
 console.log(plantList[0].category)
 for(let i=0; i < plantList.length; i++) {
     plantCategories.push(plantList[i].category)}
@@ -22,8 +52,9 @@ function removeDuplicates(plantCategories) {
     return plantCategories.filter((item, index)=> plantCategories.indexOf(item) === index);
 } 
 let categoryList = removeDuplicates(plantCategories);
-console.log(categoryList)
-/*** fin: take categories as an array ***/
+console.log(categoryList)*/
+/*** fin: take categories as an array ".filter" ***/
+
 function ShoppingList() {   
     return (
         <div>
@@ -38,9 +69,8 @@ function ShoppingList() {
             <button className="btn" id="btnInside">plante grasse</button>
 
             <div>
-                <button>all</button>
                 {categoryList.map((cat, index) => (
-                    <button key={`${cat}-${index}`} id={`"btn" + ${cat}${index}`}>{cat}</button>
+                    <button key={`${cat}-${index}`} id={`"btn" + ${cat}-${index}`}>{cat}</button>
                 ))}
             </div>
 
