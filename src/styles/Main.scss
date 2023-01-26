@@ -1,0 +1,18 @@
+//npm install sass -> create src/App.scss -> import '../styles/app' in App.js
+// create src/_colors.scss ->@use 'styles/_colors.scss'; to share variables between sass files
+
+@use './colors';
+//@import "_colors" -> doesn't work
+
+
+/*general*/ //not working missing sth
+$color-primary: #6b4b61;
+$color-secondary: #FF98DA;
+$color-tertiary: #11644f;
+$color-base: #f2f2f2;
+
+.button {
+    color: rgb(207, 40, 48);
+}
+
+
